@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-//Name:Emmanuel Maseno,Admission number:BCS-05-0530//
+// Name:Emmanuel Maseno,Admission number:BCS-05-0530/2026 //
 
 int main() {
 printf("Units Offered This Semester:\n");
