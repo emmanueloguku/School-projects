@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+// Name: Emmanuel Maseno
+// Admission Number: BCS-05-0530/2026
+
+int main() {
+    float principal, time, rate, interest;
+
+    printf("Enter principal amount: ");
+    scanf("%f", &principal);
+
+    printf("Enter time: ");
+    scanf("%f", &time);
+
+    printf("Enter rate: ");
+    scanf("%f", &rate);
+
+    interest = (principal * time * rate) / 100;
+
+    printf("Simple Interest is %.2f\n", interest);
+
+    return 0;
+}
