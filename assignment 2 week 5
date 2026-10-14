@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+//Name: Emmanuel Oguku Maseno
+//Adm No: BCS-05-0530/2026
+
+float calculateFare(float distance) {
+    float fare = distance * 50;
+    return fare;
+}
+
+int main() {
+    float distance, totalFare;
+
+    printf("Enter distance traveled in km: ");
+    scanf("%f", &distance);
+
+    totalFare = calculateFare(distance);
+
+    printf("Total fare for %.2f km is KSh. %.2f\n", distance, totalFare);
+    
+    return 0;
+}
