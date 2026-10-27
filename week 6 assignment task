@@ -1,0 +1,71 @@
+#include <stdio.h>
+//Name: Emmanuel Oguku Maseno
+// ADM NO: BCS-05-0530/2026
+
+int main() {
+    printf("=== PART 1: Weekly Revenue (1D Array) ===\n");
+    float revenue[7];
+    float total = 0;
+    float average;
+
+    for(int i = 0; i < 7; i++) {
+        printf("Enter revenue for Day %d: ", i + 1);
+        scanf("%f", &revenue[i]);
+        total = total + revenue[i]; // add to total
+    }
+
+    average = total / 7;
+    printf("Total Revenue = %.2f\n", total);
+    printf("Average Revenue = %.2f\n\n", average);
+
+    printf("=== PART 2: Room Occupancy (2D Array) ===\n");
+    int rooms[5][10];
+    
+    printf("Enter 1 for occupied, 0 for vacant:\n");
+    for(int floor = 0; floor < 5; floor++) {
+        for(int room = 0; room < 10; room++) {
+            printf("Floor %d Room %d: ", floor + 1, room + 1);
+            scanf("%d", &rooms[floor][room]);
+        }
+    }
+
+    for(int floor = 0; floor < 5; floor++) {
+        int occupied = 0;
+        int vacant = 0;
+        for(int room = 0; room < 10; room++) {
+            if(rooms[floor][room] == 1) {
+                occupied = occupied + 1;
+            }
+        }
+        vacant = 10 - occupied;
+        printf("Floor %d -> Occupied: %d, Vacant: %d\n", floor + 1, occupied, vacant);
+    }
+
+    printf("\n");
+
+    printf("=== PART 3: Multiple Branches (3D Array) ===\n");
+    int hotel[3][5][10];
+    int totalOccupied = 0;
+
+    for(int branch = 0; branch < 3; branch++) {
+        printf("\n--- Branch %d ---\n", branch + 1);
+        for(int floor = 0; floor < 5; floor++) {
+            for(int room = 0; room < 10; room++) {
+                printf("Branch %d Floor %d Room %d (1/0): ", branch + 1, floor + 1, room + 1);
+                scanf("%d", &hotel[branch][floor][room]);
+
+                if(hotel[branch][floor][room] == 1) {
+                    totalOccupied = totalOccupied + 1;
+                }
+            }
+        }
+    }
+
+    int totalRooms = 3 * 5 * 10;
+    int totalVacant = totalRooms - totalOccupied;
+
+    printf("\nTotal Occupied in all branches: %d\n", totalOccupied);
+    printf("Total Vacant in all branches: %d\n", totalVacant);
+
+    return 0;
+}
