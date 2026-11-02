@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+//Name: Emmanuel Maseno
+//ADM no: BCS-05-0530/2026
+
+int main() {
+    char bookTitle[100];
+    FILE *file;
+
+    file = fopen("borrowed_books.txt", "a");
+    if (file == NULL) {
+        printf("Error! Could not open file.\n");
+        return 1;
+    }
+
+    printf("=== Library Book Borrow System ===\n");
+    printf("Enter book title (or type 'exit' to finish):\n");
+
+    while (1) {
+        printf("\nBook Title: ");
+        fgets(bookTitle, sizeof(bookTitle), stdin);
+
+        bookTitle[strcspn(bookTitle, "\n")] = 0;
+
+        if (strcmp(bookTitle, "exit") == 0) {
+            break;
+        }
+
+        fprintf(file, "%s\n", bookTitle);
+
+        printf("-> '%s' has been saved to borrowed_books.txt successfully!\n", bookTitle);
+    }
+
+    fclose(file);
+    printf("\nThank you! All books saved.\n");
+
+    return 0;
