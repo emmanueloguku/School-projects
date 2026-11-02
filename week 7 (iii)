@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+//NAME:Emmanuel Maseno Oguku
+//ADM NO:BCS-05-0530/2026
+
+int main() {
+    FILE *file;
+    float amount;
+    float total = 0;
+
+    file = fopen("sales.txt", "r");
+
+    if (file == NULL) {
+        printf("Error! sales.txt not found.\n");
+        return 1;
+    }
+
+    printf("Reading sales from sales.txt...\n");
+
+    while (fscanf(file, "%f", &amount) == 1) {
+        printf("Found sale: %.2f\n", amount);
+        total = total + amount; // ii. add to total
+    }
+
+    printf("\n---------------------------\n");
+    printf("Total Sales for the day = %.2f\n", total);
+    printf("---------------------------\n");
+
+    fclose(file);
+    printf("File closed.\n");
+
+    return 0;
+}
