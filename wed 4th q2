@@ -1,0 +1,93 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void saveStudent();
+void displayStudents();
+void addStudent();
+
+int main() {
+    saveStudent();
+    displayStudents();
+    addStudent();
+    displayStudents();
+
+    return 0;
+}
+
+void saveStudent() {
+    FILE *fp;
+    char adm[50];
+    char name[100];
+    char course[100];
+    fp = fopen("C:\\Users\\emmanuel-personal\\OneDrive\\Desktop\\Cprograms\\students.txt", "w");
+
+    if (fp == NULL) {
+        printf("Error creating the file  (path) \n");
+        exit(1);
+    }
+    printf("Enter admission number \n");
+    fgets(adm, sizeof(adm), stdin);
+    printf("Enter full name \n");
+    fgets(name, sizeof(name), stdin);
+    printf("Enter course \n");
+    fgets(course, sizeof(course), stdin);
+
+    fputs("Admission No: ", fp);
+    fputs(adm, fp);
+    fputs("Full Name: ", fp);
+    fputs(name, fp);
+    fputs("Course: ", fp);
+    fputs(course, fp);
+    fputs("\n", fp);
+
+    printf("student succesfully saved to file.  \n");
+    fclose(fp);
+}
+
+void displayStudents() {
+    FILE *fp;
+    int ch;
+    fp = fopen("C:\\Users\\emmanuel-personal\\OneDrive\\Desktop\\Cprograms\\students.txt", "r");
+
+    if (fp == NULL) {
+        printf("Error creating the file (path) \n");
+        exit(1);
+    }
+
+    while ((ch = getc(fp)) != EOF) {
+        putchar(ch);
+    }
+
+    printf("File successfully read \n");
+    fclose(fp);
+}
+
+void addStudent() {
+    FILE *fp;
+    char adm[50];
+    char name[100];
+    char course[100];
+    fp = fopen("C:\\Users\\emmanuel-personal\\OneDrive\\Desktop\\Cprograms\\students.txt", "a");
+
+    if (fp == NULL) {
+        printf("Error creating the file (path) \n");
+        exit(1);
+    }
+    printf("Enter admission number to add \n");
+    fgets(adm, sizeof(adm), stdin);
+    printf("Enter full name to add \n");
+    fgets(name, sizeof(name), stdin);
+    printf("Enter course to add \n");
+    fgets(course, sizeof(course), stdin);
+
+    fputs("Admission No: ", fp);
+    fputs(adm, fp);
+    fputs("Full Name: ", fp);
+    fputs(name, fp);
+    fputs("Course: ", fp);
+    fputs(course, fp);
+    fputs("\n", fp);
+
+    printf("student successfully added to file. \n");
+    fclose(fp);
+}
