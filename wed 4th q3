@@ -1,0 +1,93 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void writeEmployee();
+void readEmployee();
+void appendEmployee();
+
+int main() {
+    writeEmployee();
+    readEmployee();
+    appendEmployee();
+    readEmployee();
+
+    return 0;
+}
+
+void writeEmployee() {
+    FILE *fp;
+    char id[50];
+    char name[100];
+    char department[100];
+    fp = fopen("C:\\Users\\emmanuel-personal\\OneDrive\\Desktop\\Cprograms\\employees.txt", "w");
+
+    if (fp == NULL) {
+        printf("Error creating the file  (path) \n");
+        exit(1);
+    }
+    printf("Enter employee identification number \n");
+    fgets(id, sizeof(id), stdin);
+    printf("Enter full name \n");
+    fgets(name, sizeof(name), stdin);
+    printf("Enter department \n");
+    fgets(department, sizeof(department), stdin);
+
+    fputs("ID No: ", fp);
+    fputs(id, fp);
+    fputs("Full Name: ", fp);
+    fputs(name, fp);
+    fputs("Department: ", fp);
+    fputs(department, fp);
+    fputs("\n", fp);
+
+    printf("employee succesfully written to file.  \n");
+    fclose(fp);
+}
+
+void readEmployee() {
+    FILE *fp;
+    int ch;
+    fp = fopen("C:\\Users\\emmanuel-personal\\OneDrive\\Desktop\\Cprograms\\employees.txt", "r");
+
+    if (fp == NULL) {
+        printf("Error creating the file (path) \n");
+        exit(1);
+    }
+
+    while ((ch = getc(fp)) != EOF) {
+        putchar(ch);
+    }
+
+    printf("File successfully read \n");
+    fclose(fp);
+}
+
+void appendEmployee() {
+    FILE *fp;
+    char id[50];
+    char name[100];
+    char department[100];
+    fp = fopen("C:\\Users\\emmanuel-personal\\OneDrive\\Desktop\\Cprograms\\employees.txt", "a");
+
+    if (fp == NULL) {
+        printf("Error creating the file (path) \n");
+        exit(1);
+    }
+    printf("Enter employee identification number to add \n");
+    fgets(id, sizeof(id), stdin);
+    printf("Enter full name to add \n");
+    fgets(name, sizeof(name), stdin);
+    printf("Enter department to add \n");
+    fgets(department, sizeof(department), stdin);
+
+    fputs("ID No: ", fp);
+    fputs(id, fp);
+    fputs("Full Name: ", fp);
+    fputs(name, fp);
+    fputs("Department: ", fp);
+    fputs(department, fp);
+    fputs("\n", fp);
+
+    printf("employee successfully appended to file. \n");
+    fclose(fp);
+}
